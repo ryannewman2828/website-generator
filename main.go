@@ -5,6 +5,7 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/xchapter7x/lo"
+	"github.com/ryannewman2828/website-generator/commands"
 )
 
 const (
@@ -16,14 +17,8 @@ const (
 )
 
 
-//ErrorHandler -
-type ErrorHandler struct {
-	ExitCode int
-	Error    error
-}
-
 func main() {
-	eh := new(ErrorHandler)
+	eh := new(commands.ErrorHandler)
 	eh.ExitCode = 0
 	app := NewApp(eh)
 	if err := app.Run(os.Args); err != nil {
@@ -35,7 +30,7 @@ func main() {
 }
 
 // NewApp creates a new cli app
-func NewApp(eh *ErrorHandler) *cli.App {
+func NewApp(eh *commands.ErrorHandler) *cli.App {
 	app := cli.NewApp()
 	app.Version = VERSION
 	app.Name = NAME
@@ -50,6 +45,11 @@ func NewApp(eh *ErrorHandler) *cli.App {
 				return
 			},
 		},
+		commands.CreateInitCommand(eh),
+		commands.CreateBuildCommand(eh),
+		commands.CreateCleanCommand(eh),
+		commands.CreateServeCommand(eh),
+		commands.CreateCreateComponentCommand(eh),
 	}
 	return app
 }
