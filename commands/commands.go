@@ -2,10 +2,10 @@ package commands
 
 import (
 	"fmt"
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 )
 
-//ErrorHandler -
+// ErrorHandler -
 type ErrorHandler struct {
 	ExitCode int
 	Error    error
@@ -89,6 +89,7 @@ func CreateServeCommand(eh *ErrorHandler) (command cli.Command) {
 	flags := []cli.Flag{}
 	flag := cli.IntFlag{
 		Name:  "port, p",
+
 		Usage: "The desired port for which the site will be served",
 	}
 	flags = append(flags, flag)
@@ -105,7 +106,7 @@ func CreateServeCommand(eh *ErrorHandler) (command cli.Command) {
 	return
 }
 
-
+// CreateCreateComponentCommand - Creates CLI command for creating markdown skeleton files
 func CreateCreateComponentCommand(eh *ErrorHandler) (command cli.Command) {
 	flags := []cli.Flag{}
 	command = cli.Command{

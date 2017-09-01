@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	"github.com/xchapter7x/lo"
 	"github.com/ryannewman2828/website-generator/commands"
 )
@@ -12,7 +12,7 @@ const (
 	//VERSION -
 	VERSION string = "0.0.1"
 	NAME string = "Website Generator"
-	USAGE string = "A Generator for static websites"
+	USAGE string = "A Generator for static websites, assumes usage from the site directory"
 	HELP_NAME string = "website-generator"
 )
 
